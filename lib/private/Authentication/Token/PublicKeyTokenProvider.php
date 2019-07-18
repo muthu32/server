@@ -306,6 +306,7 @@ class PublicKeyTokenProvider implements IProvider {
 		$res = openssl_pkey_new($config);
 		if ($res === false) {
 			$this->logOpensslError();
+			throw new \Exception('OpenSSL error happened');
 		}
 
 		openssl_pkey_export($res, $privateKey);
